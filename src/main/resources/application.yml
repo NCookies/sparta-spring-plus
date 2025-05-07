@@ -1,0 +1,22 @@
+spring:
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                format_sql: true
+                use_sql_comments: true
+                show_sql: true
+        hibernate:
+#            ddl-auto: create
+            ddl-auto: update
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/server?serverTimezone=Asia/Seoul
+        username: root
+        password: 1234
+        hikari:
+            auto-commit: true
+
+jwt:
+    secret:
+        key: BvdCDROpy/QRNPizw10GXalXzl41f/YOK2SfJNK2s+w=
