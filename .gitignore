@@ -8,6 +8,8 @@ build/
 ### Custom ###
 db/mysql/data
 .env
+src/main/resources/application-local.yml
+src/test/resources/application.yml
 
 ### STS ###
 .apt_generated

@@ -51,6 +51,11 @@ dependencies {
     // sprint security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // aws
+    implementation(platform("software.amazon.awssdk:bom:2.31.40"))
+    implementation 'software.amazon.awssdk:s3'
+    implementation 'software.amazon.awssdk:auth'
 }
 
 tasks.named('test') {
