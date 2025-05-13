@@ -1,6 +1,7 @@
 package org.example.expert.domain.user.dto.response;
 
 import lombok.Getter;
+import org.example.expert.domain.user.entity.User;
 
 @Getter
 public class UserResponse {
@@ -12,4 +13,12 @@ public class UserResponse {
         this.id = id;
         this.email = email;
     }
+
+    public static UserResponse fromEntity(User user) {
+        return new UserResponse(
+                user.getId(),
+                user.getEmail()
+        );
+    }
+
 }

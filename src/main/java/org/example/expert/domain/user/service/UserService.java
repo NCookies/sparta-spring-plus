@@ -48,4 +48,12 @@ public class UserService {
             throw new InvalidRequestException("새 비밀번호는 8자 이상이어야 하고, 숫자와 대문자를 포함해야 합니다.");
         }
     }
+
+    public UserResponse findUserByNickname(String nickname) {
+
+        return userRepository.findByNickname(nickname)
+                .map(UserResponse::fromEntity)
+                .orElse(null);
+    }
+
 }
