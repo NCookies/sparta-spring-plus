@@ -112,7 +112,7 @@ public class UserQueryPerfTest {
 
     @AfterAll
     static void printSummary() {
-        System.out.println("\n=== Performance Summary (cold calls, sorted) ===");
+        System.out.println("\n=== Performance Summary ===");
         System.out.printf("%-25s %10s%n", "Method", "Time (ms)");
         System.out.println("------------------------- ----------");
         results.entrySet().stream()
@@ -125,68 +125,5 @@ public class UserQueryPerfTest {
                         System.out.printf("%-25s %10d%n", e.getKey(), e.getValue())
                 );
     }
-
-//    @Test
-//    @DisplayName("1. JPQL 방식")
-//    void testSimpleJpql() {
-//        StopWatch sw = new StopWatch("JPQL");
-//        sw.start("findSimpleByNicknamePrefix");
-//        userRepository.findSimpleByNicknamePrefix(PREFIX, PageRequest.of(OFFSET, LIMIT));
-//        sw.stop();
-//        System.out.println("검색 시간 : " + sw.getTotalTimeMillis() + " ms");
-//        System.out.println(sw.prettyPrint());
-//    }
-//
-//    @Test
-//    @DisplayName("2. Native SQL 방식")
-//    void testSimpleNative() {
-//        StopWatch sw = new StopWatch("Native");
-//        sw.start("findSimpleNative");
-//        List<SimpleUserProjection> list = userRepository.findSimpleNative(PREFIX, LIMIT, OFFSET);
-//        sw.stop();
-//        System.out.println("Native result size: " + list.size());
-//        System.out.println(sw.prettyPrint());
-//    }
-//
-//    @Test
-//    @DisplayName("3. Querydsl 방식")
-//    void testSimpleQuerydsl() {
-//        StopWatch sw = new StopWatch("Querydsl");
-//        sw.start("fetchSimple");
-//        List<SimpleUserDto> list = userRepository.fetchSimple(PREFIX, LIMIT, OFFSET);
-//        sw.stop();
-//        System.out.println("Querydsl result size: " + list.size());
-//        System.out.println(sw.prettyPrint());
-//    }
-//
-//    @DisplayName("1. 기본 JPA 메서드 사용")
-//    @Test
-//    void measureBasicJpa() {
-//        StopWatch sw = new StopWatch();
-//        sw.start();
-//        userService.findUserByNickname(sampleNickname);
-//        sw.stop();
-//        System.out.println("검색 시간 : " + sw.getTotalTimeMillis() + " ms");
-//    }
-//
-//    @DisplayName("2. 네이티브 쿼리 사용")
-//    @Test
-//    void measureNativeQuery() {
-//        StopWatch sw = new StopWatch();
-//        sw.start();
-//        userService.findUserByNicknameNativeQuery(sampleNickname);
-//        sw.stop();
-//        System.out.println("검색 시간 : " + sw.getTotalTimeMillis() + " ms");
-//    }
-//
-//    @DisplayName("3. DTO Projection 사용")
-//    @Test
-//    void measureProjection() {
-//        StopWatch sw = new StopWatch();
-//        sw.start();
-//        userService.findUserByNicknameProjection(sampleNickname);
-//        sw.stop();
-//        System.out.println("검색 시간 : " + sw.getTotalTimeMillis() + " ms");
-//    }
 
 }
