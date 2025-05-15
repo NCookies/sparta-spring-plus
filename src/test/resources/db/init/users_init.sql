@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
@@ -12,3 +14,22 @@ CREATE TABLE users
 
 ALTER TABLE users
     ADD CONSTRAINT uc_users_email UNIQUE (email);
+
+CREATE INDEX idx_nickname ON users (nickname);
+
+LOAD DATA LOCAL INFILE '/docker-entrypoint-initdb.d/users.csv'
+    INTO TABLE users
+    FIELDS TERMINATED BY ','
+    ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES
+    (created_at, modified_at, email, password, nickname, user_role);
+
+# testcontainers로 테스트 시 주석 해제
+# LOAD DATA LOCAL INFILE 'src/test/resources/db/init/users.csv'
+#     INTO TABLE users
+#     FIELDS TERMINATED BY ','
+#     ENCLOSED BY '"'
+#     LINES TERMINATED BY '\n'
+#     IGNORE 1 LINES
+#     (created_at, modified_at, email, password, nickname, user_role);

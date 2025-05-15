@@ -13,6 +13,7 @@ src/main/resources/application-local.yml
 ### test ###
 src/test/resources/application.yml
 src/test/resources/db/init/users.csv
+**.csv
 
 ### STS ###
 .apt_generated
