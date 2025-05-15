@@ -56,4 +56,16 @@ public class UserService {
                 .orElse(null);
     }
 
+    public UserResponse findUserByNicknameNativeQuery(String nickname) {
+
+        return userRepository.findByNicknameNativeQuery(nickname)
+                .map(UserResponse::fromEntity)
+                .orElse(null);
+    }
+
+    public UserResponse findUserByNicknameProjection(String nickname) {
+
+        return userRepository.findByNicknameProjection(nickname);
+    }
+
 }
